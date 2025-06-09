@@ -100,3 +100,8 @@ def setup_database(conn):
     try:
         for table_name, table_sql in tables.items():
             cursor.execute(table_sql)
+               print(f"✅ Tabla {table_name} creada/verificada")
+        conn.commit()
+    except mysql.connector.Error as err:
+        print(f"❌ Error creando tablas: {err}")
+        conn.rollback()
