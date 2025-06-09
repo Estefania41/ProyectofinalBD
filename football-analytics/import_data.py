@@ -61,3 +61,17 @@ def setup_database(conn):
                 day_of_week INT
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         """,
+        'dim_match_stats': """
+            CREATE TABLE IF NOT EXISTS dim_match_stats (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                possession_home INT,
+                shots_home INT,
+                shots_on_target_home INT,
+                shots_away INT,
+                shots_on_target_away INT,
+                corners_home INT,
+                corners_away INT,
+                fouls_home INT,
+                fouls_away INT
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        """,
