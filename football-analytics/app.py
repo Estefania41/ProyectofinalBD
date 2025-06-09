@@ -382,4 +382,30 @@ def update_dashboard(start_date, end_date, selected_comps, selected_teams):
             filter_action='native',
             sort_action='native'
         )
+     # Opciones para filtros
+        comp_options = [{'label': comp, 'value': comp} for comp in df['competition'].unique()]
+        all_teams = set(df['home_team']).union(set(df['away_team']))
+        team_options = [{'label': team, 'value': team} for team in sorted(all_teams)]
         
+        # Crear gráfico dirigido
+        directed_graph = create_directed_graph(filtered_df, graph_type='wins', threshold=3)
+        
+        return (
+            comp_options,
+            team_options,
+            f"{total_matches}",
+            f"{home_win_rate:.1f}%",
+            f"{avg_possession:.1f}%",
+            f"{goals_per_match:.2f}",
+            goals_fig,
+            results_fig,
+            table,
+            directed_graph     # Gráfico dirigido
+        )
+        
+    except Exception as e:
+        logger.error(f"❌ Error en callback: {str(e)}")
+        return [], [], "Error", "Error", "Error", "Error", {}, {}, "Error al cargar datos", create_empty_figure("Error al cargar datos")
+
+if __name__ == '__main__':
+    app.run_server(host='0.0.0.0', port=5001, debug=True)
