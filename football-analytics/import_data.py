@@ -135,3 +135,9 @@ def import_data(conn):
         cursor.close()
 def main():
     print("⚽ Iniciando importador de datos de fútbol")
+    try:
+        conn = connect_db()
+        setup_database(conn)
+        import_data(conn)
+        print("✅ Proceso completado exitosamente")
+        
