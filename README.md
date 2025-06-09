@@ -1,20 +1,18 @@
 # ProyectofinalBD
 Proyecto final de bases de datos III
-Football Analytics Dashboard ⚽📊
-https://via.placeholder.com/800x400?text=Football+Analytics+Dashboard+Preview
-
-Descripción 📝
+Football Analytics Dashboard 
+## Descripción 
 Este dashboard interactivo permite visualizar y analizar estadísticas de partidos de fútbol, incluyendo:
 
-📈 Comparación de rendimiento entre equipos
+Comparación de rendimiento entre equipos
 
-📊 Distribución de resultados (victorias locales/visitantes/empates)
+Distribución de resultados (victorias locales/visitantes/empates)
 
-🕸️ Grafos de relaciones entre equipos
+Grafos de relaciones entre equipos
 
-📉 Tendencias temporales de rendimiento
+Tendencias temporales de rendimiento
 
-Características principales ✨
+## Características principales ✨
 Visualización interactiva con filtros por fecha, competición y equipos
 
 KPIs clave: porcentaje de victorias, posesión promedio, goles por partido
@@ -34,3 +32,11 @@ graph TD
     C --> E[(Docker Container)]
     D --> E
 ```
+## Requisitos del sistema 
+Docker 20.10+
+
+Docker Compose 1.29+
+
+2 GB de RAM disponibles
+
+Conexión a internet para acceder a la API
