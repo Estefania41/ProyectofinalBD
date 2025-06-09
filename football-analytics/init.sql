@@ -40,3 +40,9 @@ CREATE TABLE IF NOT EXISTS facts_matches (
     stats_id INT,
     date_id INT,
     competition_id INT,
+    FOREIGN KEY (home_team_id) REFERENCES dim_teams(id),
+    FOREIGN KEY (away_team_id) REFERENCES dim_teams(id),
+    FOREIGN KEY (stats_id) REFERENCES dim_match_stats(id),
+    FOREIGN KEY (date_id) REFERENCES dim_dates(id),
+    FOREIGN KEY (competition_id) REFERENCES dim_competitions(id)
+);
