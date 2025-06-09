@@ -33,3 +33,10 @@ CREATE TABLE IF NOT EXISTS dim_match_stats (
 -- Tabla de hechos de partidos
 CREATE TABLE IF NOT EXISTS facts_matches (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    home_team_id INT,
+    away_team_id INT,
+    home_score INT,
+    away_score INT,
+    stats_id INT,
+    date_id INT,
+    competition_id INT,
