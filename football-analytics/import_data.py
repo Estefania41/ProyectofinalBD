@@ -85,3 +85,12 @@ def setup_database(conn):
                 stats_id INT,
                 home_score INT,
                 away_score INT,
+                status VARCHAR(20),
+                stage VARCHAR(50),
+                FOREIGN KEY (home_team_id) REFERENCES dim_teams(id),
+                FOREIGN KEY (away_team_id) REFERENCES dim_teams(id),
+                FOREIGN KEY (competition_id) REFERENCES dim_competitions(id),
+                FOREIGN KEY (date_id) REFERENCES dim_dates(id),
+                FOREIGN KEY (stats_id) REFERENCES dim_match_stats(id)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        """
