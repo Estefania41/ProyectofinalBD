@@ -23,3 +23,10 @@ CREATE TABLE IF NOT EXISTS dim_dates (
     day_of_week INT,
     is_weekend BOOLEAN
 );
+-- Tabla de estadísticas de partidos
+CREATE TABLE IF NOT EXISTS dim_match_stats (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    possession_home FLOAT,
+    shots_on_target_home INT,
+    shots_on_target_away INT
+);
