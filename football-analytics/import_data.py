@@ -18,3 +18,5 @@ DB_CONFIG = {
     'port': os.getenv('DB_PORT', 3306),
     'auth_plugin': 'mysql_native_password'
 }
+def get_headers():
+    return {'X-Auth-Token': API_KEY}
