@@ -33,4 +33,13 @@ def connect_db(max_retries=5, retry_delay=5):
                 time.sleep(retry_delay)
    raise Exception("❌ No se pudo conectar a la base de datos")
 def setup_database(conn):
+        """Crear tablas si no existen con sintaxis corregida"""
+    tables = {
+        'dim_competitions': """
+            CREATE TABLE IF NOT EXISTS dim_competitions (
+                id INT PRIMARY KEY,
+                name VARCHAR(100) NOT NULL,
+                code VARCHAR(10),
+                area_name VARCHAR(100)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
                 
