@@ -17,3 +17,8 @@ services:
       interval: 5s
       timeout: 10s
       retries: 5
+  web:
+    build: .
+    container_name: football_analytics
+    depends_on:
+      db:
