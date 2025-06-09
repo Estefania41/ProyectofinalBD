@@ -48,4 +48,31 @@ app.layout = html.Div(style={'fontFamily': 'Open Sans, sans-serif'}, children=[
         html.H1("Análisis de Rendimiento en Fútbol", style={'margin': '0'}),
         html.P("Visualización interactiva de estadísticas de partidos", style={'margin': '5px 0 0 0'}),
     ]),
-    
+    # Filtros
+    html.Div(style={
+        'display': 'flex', 
+        'flexWrap': 'wrap', 
+        'gap': '20px', 
+        'marginBottom': '20px', 
+        'backgroundColor': '#f8f9fa', 
+        'padding': '15px', 
+        'borderRadius': '5px'
+    }, children=[
+        dcc.DatePickerRange(
+            id='date-range',
+            min_date_allowed=datetime(2020, 1, 1),
+            max_date_allowed=datetime.now(),
+            start_date=datetime(2023, 1, 1),
+            end_date=datetime.now()
+        ),
+        dcc.Dropdown(
+            id='competition-filter', 
+            multi=True, 
+            placeholder="Todas las competiciones"
+        ),
+        dcc.Dropdown(
+            id='team-filter', 
+            multi=True, 
+            placeholder="Todos los equipos"
+        )
+    ]),
