@@ -6,3 +6,5 @@ SQLAlchemy==2.0.19
 mysql-connector-python==8.0.33
 python-dotenv==1.0.0
 gunicorn==21.2.0
+networkx==2.8.8
+flask-jwt-extended==4.3.1
