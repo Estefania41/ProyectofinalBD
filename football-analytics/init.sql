@@ -57,3 +57,8 @@ INSERT INTO dim_teams (name) VALUES
 ('Real Madrid'),
 ('Barcelona'),
 ('Atlético Madrid'),
+('Manchester City'),
+('Liverpool'),
+('Bayern Munich'),
+('PSG'),
+('Juventus');
