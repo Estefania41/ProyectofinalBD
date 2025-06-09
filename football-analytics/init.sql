@@ -46,3 +46,10 @@ CREATE TABLE IF NOT EXISTS facts_matches (
     FOREIGN KEY (date_id) REFERENCES dim_dates(id),
     FOREIGN KEY (competition_id) REFERENCES dim_competitions(id)
 );
+-- Insertar datos de ejemplo
+INSERT INTO dim_competitions (name) VALUES 
+('La Liga'),
+('Premier League'),
+('Bundesliga'),
+('Serie A'),
+('Ligue 1');
