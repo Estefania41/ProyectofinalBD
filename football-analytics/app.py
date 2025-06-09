@@ -100,3 +100,21 @@ app.layout = html.Div(style={'fontFamily': 'Open Sans, sans-serif'}, children=[
         dcc.Graph(id='results-distribution'),
         dcc.Graph(id='directed-graph')       # Gráfico dirigido
     ]),
+    # Tabla de datos
+    html.Div(style={'marginBottom': '20px'}, children=[
+        html.H3("Detalle de Partidos", style={'marginBottom': '10px'}),
+        html.Div(id='matches-table')
+    ]),
+    
+    # Footer
+    html.Footer(style={
+        'backgroundColor': '#2c3e50', 
+        'color': 'white', 
+        'padding': '15px', 
+        'textAlign': 'center', 
+        'borderRadius': '5px'
+    }, children=[
+        html.P("Football Analytics Dashboard"),
+        html.P(f"Última actualización: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    ])
+])
