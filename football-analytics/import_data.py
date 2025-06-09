@@ -147,3 +147,5 @@ def main():
         if 'conn' in locals() and conn.is_connected():
             conn.close()
             print("🔌 Conexión a la base de datos cerrada")
+            if __name__ == '__main__':
+    main()
