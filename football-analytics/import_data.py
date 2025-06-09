@@ -105,3 +105,8 @@ def setup_database(conn):
     except mysql.connector.Error as err:
         print(f"❌ Error creando tablas: {err}")
         conn.rollback()
+         raise  # Relanzamos la excepción para detener el proceso
+    finally:
+        cursor.close()
+def import_data(conn):
+    """Importar datos desde la API"""
