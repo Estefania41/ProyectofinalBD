@@ -126,3 +126,5 @@ def import_data(conn):
                 name=VALUES(name), code=VALUES(code), area_name=VALUES(area_name)""",
                 (comp['id'], comp['name'], comp['code'], comp['area']['name'])
             )
+        conn.commit()
+        print(f"✅ Importadas {len(competitions)} competiciones")
