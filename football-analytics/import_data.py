@@ -42,4 +42,14 @@ def setup_database(conn):
                 code VARCHAR(10),
                 area_name VARCHAR(100)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            """,
+        'dim_teams': """
+            CREATE TABLE IF NOT EXISTS dim_teams (
+                id INT PRIMARY KEY,
+                name VARCHAR(100) NOT NULL,
+                short_name VARCHAR(50),
+                tla VARCHAR(10),
+                crest_url VARCHAR(255)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        """,
                 
