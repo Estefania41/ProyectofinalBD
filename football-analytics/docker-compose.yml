@@ -22,3 +22,11 @@ services:
     container_name: football_analytics
     depends_on:
       db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: futbol_user
+      DB_PASSWORD: futbol_pass
+      DB_NAME: futbol_db
+    ports:
