@@ -30,3 +30,7 @@ services:
       DB_PASSWORD: futbol_pass
       DB_NAME: futbol_db
     ports:
+      - "5001:5001"
+    volumes:
+      - .:/app
+    restart: unless-stopped
