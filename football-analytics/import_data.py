@@ -133,3 +133,5 @@ def import_data(conn):
         conn.rollback()
     finally:
         cursor.close()
+def main():
+    print("⚽ Iniciando importador de datos de fútbol")
