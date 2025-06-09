@@ -30,3 +30,6 @@ CREATE TABLE IF NOT EXISTS dim_match_stats (
     shots_on_target_home INT,
     shots_on_target_away INT
 );
+-- Tabla de hechos de partidos
+CREATE TABLE IF NOT EXISTS facts_matches (
+    id INT AUTO_INCREMENT PRIMARY KEY,
