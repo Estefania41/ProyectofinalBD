@@ -94,3 +94,9 @@ def setup_database(conn):
                 FOREIGN KEY (stats_id) REFERENCES dim_match_stats(id)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         """
+            }
+    
+    cursor = conn.cursor()
+    try:
+        for table_name, table_sql in tables.items():
+            cursor.execute(table_sql)
