@@ -141,3 +141,6 @@ def main():
         import_data(conn)
         print("✅ Proceso completado exitosamente")
         
+    except Exception as e:
+        print(f"❌ Error crítico: {str(e)}")
+    finally:
