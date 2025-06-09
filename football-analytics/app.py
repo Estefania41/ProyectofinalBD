@@ -183,3 +183,24 @@ def load_match_data():
             df = pd.read_sql(query, conn)
         
         if not df.empty:
+# Procesamiento de datos
+            df['match_date'] = pd.to_datetime(df['match_date'])
+            df['result'] = df.apply(
+                lambda x: 'Local' if x['home_score'] > x['away_score'] else 
+                         'Visitante' if x['home_score'] < x['away_score'] else 'Empate',
+                axis=1
+            )
+            df['total_goals'] = df['home_score'] + df['away_score']
+            df['possession_away'] = 100 - df['possession_home']
+        
+        return df
+    except Exception as e:
+        logger.error(f"❌ Error al cargar datos: {str(e)}")
+        return pd.DataFrame()
+    finally:
+        if 'engine' in locals():
+            engine.dispose()
+
+def create_empty_figure(message):
+    """Crea una figura vacía con un mensaje"""
+    return go.Figure(data=[], layout=go.Layout(title=message))
