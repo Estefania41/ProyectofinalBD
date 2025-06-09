@@ -63,7 +63,7 @@ docker-compose up -d --build
 Uso 
 Accede al dashboard en tu navegador:
 ```text
-http://localhost:5001
+http://3.14.212.34:5001
 ```
 Estructura del proyecto 
 ```text
