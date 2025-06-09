@@ -75,3 +75,13 @@ def setup_database(conn):
                 fouls_away INT
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         """,
+                'facts_matches': """
+            CREATE TABLE IF NOT EXISTS facts_matches (
+                id INT PRIMARY KEY,
+                home_team_id INT,
+                away_team_id INT,
+                competition_id INT,
+                date_id DATE,
+                stats_id INT,
+                home_score INT,
+                away_score INT,
