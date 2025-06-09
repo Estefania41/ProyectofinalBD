@@ -11,3 +11,5 @@ RUN pip install numpy==1.24.4
 # Copiar requirements e instalar el resto
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+# Copiar el resto de los archivos
+COPY . .
