@@ -69,3 +69,5 @@ INSERT INTO dim_dates (date, year, month, day, day_of_week, is_weekend) VALUES
 ('2023-03-12', 2023, 3, 12, 6, TRUE),
 ('2023-04-05', 2023, 4, 5, 2, FALSE),
 ('2023-05-21', 2023, 5, 21, 6, TRUE);
+-- Insertar estadísticas de ejemplo
+INSERT INTO dim_match_stats (possession_home, shots_on_target_home, shots_on_target_away) VALUES 
