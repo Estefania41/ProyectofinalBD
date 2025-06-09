@@ -20,3 +20,10 @@ DB_CONFIG = {
 }
 def get_headers():
     return {'X-Auth-Token': API_KEY}
+def connect_db(max_retries=5, retry_delay=5):
+    """Conexión a la base de datos con reintentos"""
+    for attempt in range(max_retries):
+        try:
+            conn = mysql.connector.connect(**DB_CONFIG)
+            print("✅ Conexión exitosa a MySQL")
+            return conn
