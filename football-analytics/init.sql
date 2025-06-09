@@ -79,3 +79,7 @@ INSERT INTO dim_match_stats (possession_home, shots_on_target_home, shots_on_tar
 (50.0, 6, 6);
 -- Insertar partidos de ejemplo
 INSERT INTO facts_matches (home_team_id, away_team_id, home_score, away_score, stats_id, date_id, competition_id) VALUES 
+(1, 2, 3, 1, 1, 1, 1),
+(3, 1, 1, 2, 2, 2, 1),
+(4, 5, 2, 2, 3, 3, 2),
+(6, 7, 4, 0, 4, 4, 3),
