@@ -8,3 +8,6 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 # Instalar numpy primero con versión específica
 RUN pip install numpy==1.24.4
+# Copiar requirements e instalar el resto
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
