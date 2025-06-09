@@ -34,3 +34,5 @@ services:
     volumes:
       - .:/app
     restart: unless-stopped
+volumes:
+  mysql_data:
