@@ -52,4 +52,12 @@ def setup_database(conn):
                 crest_url VARCHAR(255)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         """,
-                
+                'dim_dates': """
+            CREATE TABLE IF NOT EXISTS dim_dates (
+                id DATE PRIMARY KEY,
+                day INT,
+                month INT,
+                year INT,
+                day_of_week INT
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        """,
