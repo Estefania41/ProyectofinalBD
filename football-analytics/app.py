@@ -212,5 +212,39 @@ def create_directed_graph(df, graph_type='wins', threshold=3):
         G = nx.DiGraph()
         all_teams = pd.unique(df[['home_team', 'away_team']].values.ravel('K'))
         G.add_nodes_from(all_teams)
+        # Validar columnas requeridas
+        required_cols = ['home_score', 'away_score'] if graph_type in ['wins', 'goals', 'home-away'] else []
+        if any(col not in df.columns for col in required_cols):
+            return create_empty_figure("Datos requeridos no disponibles")
+        
+        edge_data = []
+        
+        if graph_type == 'wins':
+            for _, row in df.iterrows():
+                if row['home_score'] > row['away_score']:
+                    edge_data.append((row['home_team'], row['away_team'], {'weight': 1}))
+                elif row['home_score'] < row['away_score']:
+                    edge_data.append((row['away_team'], row['home_team'], {'weight': 1}))
+        
+        elif graph_type == 'goals':
+            for _, row in df.iterrows():
+                goal_diff = row['home_score'] - row['away_score']
+                if goal_diff > 0:
+                    edge_data.append((row['home_team'], row['away_team'], {'weight': goal_diff}))
+                elif goal_diff < 0:
+                    edge_data.append((row['away_team'], row['home_team'], {'weight': abs(goal_diff)}))
+        
+        elif graph_type == 'home-away':
+            home_wins = df[df['result'] == 'Local'].groupby(['home_team', 'away_team']).size()
+            away_wins = df[df['result'] == 'Visitante'].groupby(['home_team', 'away_team']).size()
+            
+            for (home, away), count in home_wins.items():
+                if count >= threshold:
+                    edge_data.append((home, away, {'weight': count}))
+            
+            for (home, away), count in away_wins.items():
+                if count >= threshold:
+                    edge_data.append((away, home, {'weight': count}))
+        
     """Crea una figura vacía con un mensaje"""
     return go.Figure(data=[], layout=go.Layout(title=message))
