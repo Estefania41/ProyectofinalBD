@@ -248,3 +248,10 @@ def create_directed_graph(df, graph_type='wins', threshold=3):
         
     """Crea una figura vacía con un mensaje"""
     return go.Figure(data=[], layout=go.Layout(title=message))
+# Añadir relaciones con manejo seguro
+        for edge in edge_data:
+            try:
+                G.add_edge(edge[0], edge[1], **edge[2])
+            except Exception as e:
+                logger.warning(f"Error añadiendo arista: {str(e)[:200]}")
+                continue
