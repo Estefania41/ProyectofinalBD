@@ -4,3 +4,5 @@ pandas==1.5.3
 numpy==1.24.4
 SQLAlchemy==2.0.19
 mysql-connector-python==8.0.33
+python-dotenv==1.0.0
+gunicorn==21.2.0
