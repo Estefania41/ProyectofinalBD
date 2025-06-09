@@ -83,3 +83,5 @@ INSERT INTO facts_matches (home_team_id, away_team_id, home_score, away_score, s
 (3, 1, 1, 2, 2, 2, 1),
 (4, 5, 2, 2, 3, 3, 2),
 (6, 7, 4, 0, 4, 4, 3),
+(8, 6, 1, 3, 5, 5, 4),
+(2, 3, 2, 1, 6, 1, 1);
