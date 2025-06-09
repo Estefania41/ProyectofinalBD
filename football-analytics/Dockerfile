@@ -15,3 +15,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 # Puerto expuesto
 EXPOSE 5001
+# Comando para ejecutar la aplicación
+CMD ["gunicorn", "--bind", "0.0.0.0:5001", "--workers", "2", "app:server"]
