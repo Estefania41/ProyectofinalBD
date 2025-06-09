@@ -76,3 +76,27 @@ app.layout = html.Div(style={'fontFamily': 'Open Sans, sans-serif'}, children=[
             placeholder="Todos los equipos"
         )
     ]),
+ # KPIs
+    html.Div(style={
+        'display': 'grid', 
+        'gridTemplateColumns': 'repeat(auto-fit, minmax(200px, 1fr))', 
+        'gap': '15px', 
+        'marginBottom': '20px'
+    }, children=[
+        html.Div(id='total-matches', className='kpi-box'),
+        html.Div(id='home-win-rate', className='kpi-box'),
+        html.Div(id='avg-possession', className='kpi-box'),
+        html.Div(id='goals-per-match', className='kpi-box')
+    ]),
+    
+    # Gráficos
+    html.Div(style={
+        'display': 'grid', 
+        'gridTemplateColumns': '1fr', 
+        'gap': '20px', 
+        'marginBottom': '20px'
+    }, children=[
+        dcc.Graph(id='goals-comparison-chart'),
+        dcc.Graph(id='results-distribution'),
+        dcc.Graph(id='directed-graph')       # Gráfico dirigido
+    ]),
