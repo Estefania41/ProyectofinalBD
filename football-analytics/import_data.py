@@ -31,4 +31,6 @@ def connect_db(max_retries=5, retry_delay=5):
             print(f"⚠️ Intento {attempt + 1} de {max_retries}: Error de conexión - {err}")
             if attempt < max_retries - 1:
                 time.sleep(retry_delay)
+   raise Exception("❌ No se pudo conectar a la base de datos")
+def setup_database(conn):
                 
