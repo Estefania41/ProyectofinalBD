@@ -202,5 +202,15 @@ def load_match_data():
             engine.dispose()
 
 def create_empty_figure(message):
+    # Función mejorada para crear grafos dirigidos
+def create_directed_graph(df, graph_type='wins', threshold=3):
+    """Crea un grafo dirigido con manejo robusto de errores"""
+    try:
+        if df.empty or 'home_team' not in df.columns or 'away_team' not in df.columns:
+            return create_empty_figure("Datos insuficientes")
+        
+        G = nx.DiGraph()
+        all_teams = pd.unique(df[['home_team', 'away_team']].values.ravel('K'))
+        G.add_nodes_from(all_teams)
     """Crea una figura vacía con un mensaje"""
     return go.Figure(data=[], layout=go.Layout(title=message))
