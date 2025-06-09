@@ -117,3 +117,12 @@ def import_data(conn):
         # 1. Importar competiciones
         response = requests.get(f"{BASE_URL}competitions", headers=get_headers())
         competitions = response.json().get('competitions', [])
+        for comp in competitions:
+            cursor.execute(
+                """INSERT INTO dim_competitions 
+                (id, name, code, area_name) 
+                VALUES (%s, %s, %s, %s)
+                ON DUPLICATE KEY UPDATE 
+                name=VALUES(name), code=VALUES(code), area_name=VALUES(area_name)""",
+                (comp['id'], comp['name'], comp['code'], comp['area']['name'])
+            )
