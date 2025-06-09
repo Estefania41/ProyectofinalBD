@@ -310,5 +310,27 @@ def create_directed_graph(df, graph_type='wins', threshold=3):
         return fig
     
     except Exception as e:
+# Callbacks
+@app.callback(
+    [Output('competition-filter', 'options'),
+     Output('team-filter', 'options'),
+     Output('total-matches', 'children'),
+     Output('home-win-rate', 'children'),
+     Output('avg-possession', 'children'),
+     Output('goals-per-match', 'children'),
+     Output('goals-comparison-chart', 'figure'),
+     Output('results-distribution', 'figure'),
+     Output('matches-table', 'children'),
+     Output('directed-graph', 'figure')],    # Salida para el gráfico dirigido
+    [Input('date-range', 'start_date'),
+     Input('date-range', 'end_date'),
+     Input('competition-filter', 'value'),
+     Input('team-filter', 'value')]
+)
+def update_dashboard(start_date, end_date, selected_comps, selected_teams):
+    try:
+        df = load_match_data()
+        if df.empty:
+            return [], [], "0", "0%", "0%", "0", {}, {}, "No hay datos disponibles", create_empty_figure("No hay datos disponibles")
         logger.error(f"Error al crear grafo: {str(e)[:200]}")
         return create_empty_figure("Error generando gráfico")
