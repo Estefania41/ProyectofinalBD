@@ -255,3 +255,60 @@ def create_directed_graph(df, graph_type='wins', threshold=3):
             except Exception as e:
                 logger.warning(f"Error añadiendo arista: {str(e)[:200]}")
                 continue
+# Eliminar nodos aislados
+        G.remove_nodes_from(list(nx.isolates(G)))
+        
+        if len(G.nodes) == 0:
+            return create_empty_figure("No hay relaciones significativas")
+        
+        # Generar visualización con cálculo seguro de pesos
+        pos = nx.spring_layout(G, k=0.5, iterations=50)
+        edge_weights = [d.get('weight', 1) for _, _, d in G.edges(data=True)]
+        max_weight = max(edge_weights) if edge_weights else 1
+        
+        edge_traces = []
+        for edge in G.edges(data=True):
+            x0, y0 = pos[edge[0]]
+            x1, y1 = pos[edge[1]]
+            
+            line_width = 1 + 2 * edge[2].get('weight', 1) / max_weight
+            
+            edge_trace = go.Scatter(
+                x=[x0, x1], y=[y0, y1],
+                line=dict(width=line_width, color='#888'),
+                hoverinfo='text',
+                text=edge[2].get('label', ''),
+                mode='lines',
+                line_shape='spline'
+            )
+            edge_traces.append(edge_trace)
+        
+        node_trace = go.Scatter(
+            x=[pos[node][0] for node in G.nodes()],
+            y=[pos[node][1] for node in G.nodes()],
+            mode='markers+text',
+            text=list(G.nodes()),
+            textposition="top center",
+            marker=dict(
+                showscale=True,
+                colorscale='Rainbow',
+                size=20,
+                color=[G.in_degree(node, weight='weight') for node in G.nodes()],
+                colorbar=dict(title='Influencia Recibida')
+            )
+        )
+        
+        fig = go.Figure(data=edge_traces + [node_trace],
+                     layout=go.Layout(
+                        title=f'Relaciones entre Equipos - {graph_type}',
+                        showlegend=False,
+                        hovermode='closest',
+                        margin=dict(b=20,l=5,r=5,t=40),
+                        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)))
+        
+        return fig
+    
+    except Exception as e:
+        logger.error(f"Error al crear grafo: {str(e)[:200]}")
+        return create_empty_figure("Error generando gráfico")
