@@ -128,3 +128,8 @@ def import_data(conn):
             )
         conn.commit()
         print(f"✅ Importadas {len(competitions)} competiciones")
+    except Exception as e:
+        print(f"❌ Error en importación: {e}")
+        conn.rollback()
+    finally:
+        cursor.close()
