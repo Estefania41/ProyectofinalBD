@@ -334,3 +334,16 @@ def update_dashboard(start_date, end_date, selected_comps, selected_teams):
             return [], [], "0", "0%", "0%", "0", {}, {}, "No hay datos disponibles", create_empty_figure("No hay datos disponibles")
         logger.error(f"Error al crear grafo: {str(e)[:200]}")
         return create_empty_figure("Error generando gráfico")
+# Filtrar por fechas
+        start_date = pd.to_datetime(start_date) if start_date else df['match_date'].min()
+        end_date = pd.to_datetime(end_date) if end_date else df['match_date'].max()
+        filtered_df = df[(df['match_date'] >= start_date) & (df['match_date'] <= end_date)]
+        
+        # Aplicar filtros
+        if selected_comps:
+            filtered_df = filtered_df[filtered_df['competition'].isin(selected_comps)]
+        if selected_teams:
+            filtered_df = filtered_df[
+                (filtered_df['home_team'].isin(selected_teams)) | 
+                (filtered_df['away_team'].isin(selected_teams))
+            ]
