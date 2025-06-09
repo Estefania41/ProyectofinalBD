@@ -62,3 +62,8 @@ INSERT INTO dim_teams (name) VALUES
 ('Bayern Munich'),
 ('PSG'),
 ('Juventus');
+-- Insertar fechas de ejemplo
+INSERT INTO dim_dates (date, year, month, day, day_of_week, is_weekend) VALUES 
+('2023-01-15', 2023, 1, 15, 6, TRUE),
+('2023-02-20', 2023, 2, 20, 1, FALSE),
+('2023-03-12', 2023, 3, 12, 6, TRUE),
