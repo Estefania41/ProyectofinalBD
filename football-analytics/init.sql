@@ -53,3 +53,7 @@ INSERT INTO dim_competitions (name) VALUES
 ('Bundesliga'),
 ('Serie A'),
 ('Ligue 1');
+INSERT INTO dim_teams (name) VALUES 
+('Real Madrid'),
+('Barcelona'),
+('Atlético Madrid'),
