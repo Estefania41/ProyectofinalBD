@@ -27,3 +27,8 @@ def connect_db(max_retries=5, retry_delay=5):
             conn = mysql.connector.connect(**DB_CONFIG)
             print("✅ Conexión exitosa a MySQL")
             return conn
+        except mysql.connector.Error as err:
+            print(f"⚠️ Intento {attempt + 1} de {max_retries}: Error de conexión - {err}")
+            if attempt < max_retries - 1:
+                time.sleep(retry_delay)
+                
