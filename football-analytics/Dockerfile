@@ -13,3 +13,5 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 # Copiar el resto de los archivos
 COPY . .
+# Puerto expuesto
+EXPOSE 5001
