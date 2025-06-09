@@ -67,14 +67,13 @@ http://localhost:5001
 ```
 Estructura del proyecto 
 ```text
-football-analytics/
-├── app/                      # Código principal de la aplicación
-│   ├── main.py               # Aplicación Dash
-│   ├── database.py           # Conexión a la base de datos
-│   └── utils/                # Utilidades varias
-├── docker-compose.yml        # Configuración de Docker
-├── Dockerfile                # Configuración del contenedor
-├── requirements.txt          # Dependencias de Python
-└── sql/                      # Scripts SQL
-    └── init.sql              # Inicialización de la base de datos
+├── Dockerfile
+├── __pycache__
+│   └── app.cpython-39.pyc
+├── app.py
+├── docker-compose.yml
+├── import_data.py
+├── iniciodesesion.py
+├── init.sql
+└── requirements.txt
 ```
