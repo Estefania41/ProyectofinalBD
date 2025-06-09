@@ -110,3 +110,10 @@ def setup_database(conn):
         cursor.close()
 def import_data(conn):
     """Importar datos desde la API"""
+    # Aquí iría tu lógica de importación original
+    # Ejemplo simplificado:
+    cursor = conn.cursor()
+    try:
+        # 1. Importar competiciones
+        response = requests.get(f"{BASE_URL}competitions", headers=get_headers())
+        competitions = response.json().get('competitions', [])
