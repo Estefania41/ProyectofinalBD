@@ -144,3 +144,6 @@ def main():
     except Exception as e:
         print(f"❌ Error crítico: {str(e)}")
     finally:
+        if 'conn' in locals() and conn.is_connected():
+            conn.close()
+            print("🔌 Conexión a la base de datos cerrada")
