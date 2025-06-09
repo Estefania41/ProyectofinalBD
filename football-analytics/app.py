@@ -347,3 +347,39 @@ def update_dashboard(start_date, end_date, selected_comps, selected_teams):
                 (filtered_df['home_team'].isin(selected_teams)) | 
                 (filtered_df['away_team'].isin(selected_teams))
             ]
+ # Calcular métricas
+        total_matches = len(filtered_df)
+        home_win_rate = filtered_df['result'].value_counts(normalize=True).get('Local', 0) * 100
+        avg_possession = filtered_df['possession_home'].mean()
+        goals_per_match = filtered_df['total_goals'].mean() if total_matches > 0 else 0
+        
+        # Gráficos
+        goals_fig = px.box(
+            filtered_df.melt(
+                value_vars=['home_score', 'away_score'], 
+                var_name='tipo', 
+                value_name='goles'
+            ),
+            x='tipo',
+            y='goles',
+            color='tipo',
+            title='Distribución de Goles por Equipo'
+        )
+        
+        results_fig = px.pie(
+            filtered_df,
+            names='result',
+            title='Distribución de Resultados',
+            hole=0.4
+        )
+        
+        # Tabla de datos
+        table = dash_table.DataTable(
+            columns=[{"name": col, "id": col} for col in filtered_df.columns],
+            data=filtered_df.to_dict('records'),
+            page_size=10,
+            style_table={'overflowX': 'auto'},
+            filter_action='native',
+            sort_action='native'
+        )
+        
